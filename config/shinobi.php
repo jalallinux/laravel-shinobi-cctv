@@ -1,6 +1,5 @@
 <?php
 
-// config for JalalLinuX/Shinobi
 return [
 
     'super_api_token' => '',
