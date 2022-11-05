@@ -1,0 +1,69 @@
+{
+    "name": "jalallinux/laravel-shinobi-cctv",
+    "description": "Connect laravel to Shinobi.video",
+    "keywords": [
+        "jalallinux",
+        "laravel",
+        "laravel-shinobi-cctv"
+    ],
+    "homepage": "https://github.com/jalallinux/laravel-shinobi-cctv",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "JalalLinuX",
+            "email": "smjjalalzadeh93@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "spatie/laravel-package-tools": "^1.13.0",
+        "illuminate/contracts": "^9.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpunit/phpunit": "^9.5",
+        "spatie/laravel-ray": "^1.26"
+    },
+    "autoload": {
+        "psr-4": {
+            "JalalLinuX\\Shinobi\\": "src",
+            "JalalLinuX\\Shinobi\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JalalLinuX\\Shinobi\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JalalLinuX\\Shinobi\\ShinobiServiceProvider"
+            ],
+            "aliases": {
+                "Shinobi": "JalalLinuX\\Shinobi\\Facades\\Shinobi"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
