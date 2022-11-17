@@ -26,7 +26,7 @@ class Shinobi
 
     public static function as(string $mail, string $pass): Shinobi
     {
-        return new Shinobi(self::auth()->login($mail, $pass)->only(['auth_token', 'ke'])->values());
+        return new Shinobi(...(new self)->auth()->login($mail, $pass)->only(['auth_token', 'ke'])->values());
     }
 
     private function makeUrl(string $path = ''): string
