@@ -52,4 +52,9 @@ class Monitor extends FeatureAbstract
         MonitorModeJob::dispatch($this->shinobi->getToken(), $this->shinobi->getGroupKey(), $monitorId, 'start')
             ->delay($end)->onConnection(config('shinobi.queue_connection', 'redis'));
     }
+
+    public function iframe(string $monitorId, array $options = ['jquery', 'fullscreen']): string
+    {
+        return $this->shinobi->makeUrl("{$this->shinobi->getToken()}/embed/{$this->shinobi->getGroupKey()}/$monitorId/" . implode('|', $options));
+    }
 }

@@ -29,7 +29,7 @@ class Shinobi
         return new Shinobi(...(new self)->auth()->login($mail, $pass)->only(['auth_token', 'ke'])->values());
     }
 
-    private function makeUrl(string $path = ''): string
+    public function makeUrl(string $path = ''): string
     {
         $baseUrl = $this->config('base_uri');
         throw_if(is_null($baseUrl), $this->throw("Base Uri is requried."));
