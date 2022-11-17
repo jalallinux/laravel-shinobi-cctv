@@ -1,7 +1,7 @@
 # Laravel [Shinobi.Video](https://shinobi.video/) CCTV
 
 <a href="https://github.com/ShinobiCCTV/Shinobi">  
-    <p align="center"><img src="asset/shinobi-laravel.png" width="100%"></p>    
+    <p align="center"><img src="resources/asset/shinobi-laravel.png" width="100%"></p>    
 </a>  
 
 ## 🎉 Sponsored By Shinobi System 🥳
