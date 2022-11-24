@@ -22,18 +22,11 @@ composer require jalallinux/laravel-shinobi-cctv
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="shinobi-cctv-config"
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="shinobi-cctv-views"
+php artisan vendor:publish --provider="JalalLinuX\Shinobi\ShinobiServiceProvider"
 ```
 
 ## [Documents](https://github.com/jalallinux/laravel-shinobi-cctv/wiki) are on Github Wiki
-
-***
+---
 
 ## Changelog
 
