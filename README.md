@@ -26,7 +26,6 @@ php artisan vendor:publish --provider="JalalLinuX\Shinobi\ShinobiServiceProvider
 ```
 
 ## [Documents](https://github.com/jalallinux/laravel-shinobi-cctv/wiki) are on Github Wiki
----
 
 ## Changelog
 
