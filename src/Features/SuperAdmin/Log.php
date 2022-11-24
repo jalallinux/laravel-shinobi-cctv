@@ -15,12 +15,14 @@ class Log extends FeatureAbstract
     public function list(): Collection
     {
         $response = $this->shinobi->getHttpClient()->get("super/{$this->shinobi->getSuperApiToken()}/logs");
+
         return $response->throw()->collect('logs');
     }
 
     public function delete(): bool
     {
         $response = $this->shinobi->getHttpClient()->delete("super/{$this->shinobi->getSuperApiToken()}/logs/delete");
-        return !!$response->throw()->json('ok');
+
+        return (bool) $response->throw()->json('ok');
     }
 }

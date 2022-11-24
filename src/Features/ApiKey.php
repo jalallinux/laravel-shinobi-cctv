@@ -9,6 +9,7 @@ class ApiKey extends FeatureAbstract
     public function list(): Collection
     {
         $response = $this->shinobi->getHttpClient()->get("{$this->shinobi->getToken()}/api/{$this->shinobi->getGroupKey()}/list");
+
         return $response->throw()->collect('keys');
     }
 
@@ -18,17 +19,18 @@ class ApiKey extends FeatureAbstract
             'data' => [
                 'ip' => $ip,
                 'details' => [
-                    "auth_socket" => $authSocket ? "1" : "0",
-                    "get_monitors" => $getMonitors ? "1" : "0",
-                    "control_monitors" => $controlMonitors ? "1" : "0",
-                    "get_logs" => $getLogs ? "1" : "0",
-                    "watch_stream" => $watchStream ? "1" : "0",
-                    "watch_snapshot" => $watchSnapshot ? "1" : "0",
-                    "watch_videos" => $watchVideos ? "1" : "0",
-                    "delete_videos" => $deleteVideos ? "1" : "0",
-                ]
-            ]
+                    'auth_socket' => $authSocket ? '1' : '0',
+                    'get_monitors' => $getMonitors ? '1' : '0',
+                    'control_monitors' => $controlMonitors ? '1' : '0',
+                    'get_logs' => $getLogs ? '1' : '0',
+                    'watch_stream' => $watchStream ? '1' : '0',
+                    'watch_snapshot' => $watchSnapshot ? '1' : '0',
+                    'watch_videos' => $watchVideos ? '1' : '0',
+                    'delete_videos' => $deleteVideos ? '1' : '0',
+                ],
+            ],
         ]);
+
         return $response->throw()->collect('api');
     }
 
@@ -36,8 +38,9 @@ class ApiKey extends FeatureAbstract
     {
         throw_if($this->shinobi->getToken() == $token, new \Exception("Can\'t delete current API Token."));
         $response = $this->shinobi->getHttpClient()->delete("{$this->shinobi->getToken()}/api/{$this->shinobi->getGroupKey()}/delete", [
-            'data' => ['code' => $token]
+            'data' => ['code' => $token],
         ]);
-        return !!$response->throw()->json('ok');
+
+        return (bool) $response->throw()->json('ok');
     }
 }

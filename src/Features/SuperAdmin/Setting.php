@@ -14,16 +14,18 @@ class Setting extends FeatureAbstract
     public function update(array $details): bool
     {
         $response = $this->shinobi->getHttpClient()->put("super/{$this->shinobi->getSuperApiToken()}/accounts/saveSettings", [
-            'data' => ['details' => $details]
+            'data' => ['details' => $details],
         ]);
-        return !!$response->throw()->json('ok');
+
+        return (bool) $response->throw()->json('ok');
     }
 
     public function password(string $mail, string $newPass): bool
     {
         $response = $this->shinobi->getHttpClient()->put("super/{$this->shinobi->getSuperApiToken()}/accounts/saveSettings", [
-            'data' => ['mail' => $mail, 'pass' => $newPass, 'pass_again' => $newPass]
+            'data' => ['mail' => $mail, 'pass' => $newPass, 'pass_again' => $newPass],
         ]);
-        return !!$response->throw()->json('ok');
+
+        return (bool) $response->throw()->json('ok');
     }
 }

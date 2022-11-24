@@ -14,7 +14,9 @@ use JalalLinuX\Shinobi\Features\Video;
 class Shinobi
 {
     private ?string $groupKey = null;
+
     private PendingRequest $httpClient;
+
     private ?string $token = null;
 
     public function __construct(string $token = null, string $groupKey = null)
@@ -32,10 +34,11 @@ class Shinobi
     public function makeUrl(string $path = ''): string
     {
         $baseUrl = $this->config('base_uri');
-        throw_if(is_null($baseUrl), $this->throw("Base Uri is requried."));
-        if (!str_ends_with($baseUrl, '/')) {
+        throw_if(is_null($baseUrl), $this->throw('Base Uri is requried.'));
+        if (! str_ends_with($baseUrl, '/')) {
             $baseUrl .= '/';
         }
+
         return "{$baseUrl}{$path}";
     }
 
@@ -57,8 +60,9 @@ class Shinobi
     public function setToken(?string $token): Shinobi
     {
         $token = $token ?? $this->config('api_token');
-        throw_if(is_null($token), $this->throw("API Token is requried."));
+        throw_if(is_null($token), $this->throw('API Token is requried.'));
         $this->token = $token;
+
         return $this;
     }
 
@@ -69,19 +73,22 @@ class Shinobi
 
     public function getSuperApiToken(): string
     {
-        throw_if(is_null($token = $this->config('super_api_token')), new \Exception("Super API Key is required."));
+        throw_if(is_null($token = $this->config('super_api_token')), new \Exception('Super API Key is required.'));
+
         return $token;
     }
 
     public function setGroupKey(?string $groupKey): Shinobi
     {
         $this->groupKey = $groupKey ?? $this->config('group_key');
+
         return $this;
     }
 
     public function config(string $key = null)
     {
-        $key = !is_null($key) ? ".{$key}" : "";
+        $key = ! is_null($key) ? ".{$key}" : '';
+
         return config("shinobi{$key}");
     }
 
