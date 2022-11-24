@@ -3,8 +3,8 @@
 namespace JalalLinuX\Shinobi\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use JalalLinuX\Shinobi\ShinobiServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
